@@ -63,14 +63,20 @@ declare module 'glsl-parser' {
     | 'call'
     | 'builtin';
   export interface ASTNode {
-    mode: ASTNodeMode;
+    mode?: ASTNodeMode;
     token: AbstractToken | Token;
     parent?: ASTNode;
     children: ASTNode[];
     type: ASTStatementType;
-    id: string;
+    id?: string;
     expecting?: string[];
     scope?: { [name: string]: ASTNode };
+    stage?: ASTNode;
+    preceding?: ASTNode[];
+    succeeding?: ASTNode[];
+    position?: number;
+    line?: number;
+    column?: number;
   }
 }
 

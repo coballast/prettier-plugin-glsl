@@ -1,14 +1,15 @@
 import * as prettier from 'prettier';
-const code = `
-  #version 100
-  precision lowp float;
+const fs = require('fs');
 
-  void main() {
-    gl_FragColor = vec4(1, 1, 1, 1);
-  }
-`;
 console.log(
-  prettier.format(code, {
+  prettier.format(fs.readFileSync('test/simpleTest.frag').toString(), {
+    parser: 'glsl' as any,
+    plugins: ['.'],
+  })
+);
+
+console.log(
+  prettier.format(fs.readFileSync('test/test.frag').toString(), {
     parser: 'glsl' as any,
     plugins: ['.'],
   })

@@ -5,9 +5,9 @@ declare module 'glsl-tokenizer' {
   export interface Token {
     type: TokenMode;
     data: string;
-    position: number;
-    line: number;
-    column: number;
+    position?: number;
+    line?: number;
+    column?: number;
   }
   export type TokenMode =
     | 'block-comment'
